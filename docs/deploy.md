@@ -16,9 +16,28 @@ Na conta Vercel da Invent:
 
 1. **Add New → Project**
 2. Importar `inventsoftwarebr/site-invent`
-3. A Vercel detecta Next.js sozinha. **Não altere** Build Command, Output
-   Directory nem Install Command.
+3. O `vercel.json` na raiz já fixa `framework: nextjs`. **Não altere** Build
+   Command, Output Directory nem Install Command no painel.
 4. Production Branch: `master`
+
+### Se o build falhar com `No Output Directory named "dist"`
+
+O projeto está com o preset **Vite**, herdado de quando a `master` ainda era
+Vite. O Vite gera `dist/`; o Next gera `.next/`, que a Vercel serve
+nativamente — por isso ela procura uma pasta que nunca vai existir. O build do
+Next em si passou.
+
+O `vercel.json` corrige isso. Se mesmo assim persistir, é porque alguém marcou
+um **override manual** no painel, que tem precedência sobre o preset:
+
+**Settings → Build & Deployment**
+
+- Framework Preset: `Next.js`
+- Build Command: override **desligado**
+- Output Directory: override **desligado** (se estiver escrito `dist`, apagar)
+- Install Command: override **desligado**
+
+Depois, **Redeploy** — sem marcar "use existing build cache".
 
 ## 2. Variáveis de ambiente
 
