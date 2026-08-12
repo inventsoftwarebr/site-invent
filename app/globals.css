@@ -1,0 +1,248 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   Invent Software — Design System
+   Valores canônicos vindos do manual de marca 2021 (via handoff Claude Design).
+   Fonte: universidade-invent/docs/brand/design-system-v2/colors_and_type.css
+   Mantenha os dois projetos em sincronia: mesma marca, mesmos hex.
+   ============================================================================ */
+
+@theme {
+  /* ---- Primitivas de marca ---- */
+  --color-red-50: #ffedee;
+  --color-red-100: #ffd0d2;
+  --color-red-200: #fba0a4;
+  --color-red-300: #f36f75;
+  --color-red-400: #e94049;
+  --color-red-500: #d81e2d;
+  --color-red-600: #b81825;
+  --color-red-700: #8e121c;
+  --color-red-800: #680d14;
+  --color-red-900: #420609;
+
+  --color-gold-50: #fff8e0;
+  --color-gold-100: #ffecb3;
+  --color-gold-200: #ffd980;
+  --color-gold-300: #ffc246;
+  --color-gold-400: #ffb000;
+  --color-gold-500: #f7a600;
+  --color-gold-600: #d08800;
+  --color-gold-700: #a06600;
+  --color-gold-800: #704700;
+  --color-gold-900: #422900;
+
+  --color-purple-100: #dcd3f2;
+  --color-purple-300: #8a6fd1;
+  --color-purple-500: #4527a0;
+  --color-purple-700: #2e1a6b;
+  --color-purple-900: #1a0f3d;
+
+  --color-ink: #1f1f23;
+  --color-carbon: #0a0a0b;
+  --color-gray-50: #f7f8fa;
+  --color-gray-100: #eef0f3;
+  --color-gray-200: #e2e5ea;
+  --color-gray-300: #cdd2da;
+  --color-gray-400: #b0b6c0;
+  --color-gray-500: #8b92a0;
+  --color-gray-600: #6b7280;
+  --color-gray-700: #4b5566;
+  --color-gray-800: #353841;
+  --color-gray-900: #2a2d33;
+
+  --color-orange-500: #f39200;
+  --color-teal-500: #00a88f;
+
+  /* ---- Cores por produto (manual de marca) ---- */
+  --color-product-tax: #4527a0;
+  --color-product-bank: #f7a600;
+  --color-product-contract: #d81e2d;
+  --color-product-intercompany: #f39200;
+  --color-product-payroll: #00a88f;
+
+  /* ---- Tipografia ---- */
+  --font-display: var(--font-barlow), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  /* ---- Motion ---- */
+  --ease-brand: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ---- Layout ---- */
+  --container-page: 1200px;
+  --container-wide: 1400px;
+}
+
+/* ============================================================================
+   Tokens semânticos — modo escuro é o default do site institucional.
+   Seções claras recebem a classe `.section-light`.
+   ============================================================================ */
+
+:root {
+  --bg: #0a0a0b;
+  --bg-elevated: #121216;
+  --bg-subtle: #17171c;
+  --fg: #ffffff;
+  --fg-secondary: #b0b6c0;
+  --fg-tertiary: #8b92a0;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
+
+  --brand: #f7a600;
+  --brand-hover: #ffb000;
+  --accent: #d81e2d;
+
+  --v-gradient: linear-gradient(
+    180deg,
+    #ffb000 0%,
+    #f7a600 38%,
+    #d81e2d 78%,
+    #b81825 100%
+  );
+}
+
+.section-light {
+  --bg: #ffffff;
+  --bg-elevated: #f7f8fa;
+  --bg-subtle: #eef0f3;
+  --fg: #1f1f23;
+  --fg-secondary: #4b5566;
+  --fg-tertiary: #8b92a0;
+  --border: rgba(10, 10, 11, 0.1);
+  --border-strong: rgba(10, 10, 11, 0.2);
+
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+/* ============================================================================
+   Base
+   ============================================================================ */
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Header sticky de 72px + folga, para âncoras não ficarem sob o header */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: #0a0a0b;
+    color: #ffffff;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: #f7a600;
+    color: #0a0a0b;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Respeita quem pediu menos movimento — vale para todo o site. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ============================================================================
+   Utilities de marca
+   ============================================================================ */
+
+@utility text-v-gradient {
+  background-image: var(--v-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility bg-v-gradient {
+  background-image: var(--v-gradient);
+}
+
+/* Malha de pontos sutil — assinatura visual herdada do site anterior. */
+@utility bg-dots {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(255, 255, 255, 0.07) 1px,
+    transparent 0
+  );
+  background-size: 32px 32px;
+}
+
+@utility bg-dots-dark {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(10, 10, 11, 0.08) 1px,
+    transparent 0
+  );
+  background-size: 32px 32px;
+}
+
+/* ============================================================================
+   Animações
+   ============================================================================ */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 48s linear infinite;
+}
+
+.marquee-wrapper:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2.4s var(--ease-brand) infinite;
+}
