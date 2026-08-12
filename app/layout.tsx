@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { company } from "@/content/company";
-import { organizationJsonLd, SITE_URL } from "@/lib/seo";
+import { IS_PRODUCTION_SITE, organizationJsonLd, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const barlow = Barlow({
@@ -65,11 +65,14 @@ export const metadata: Metadata = {
     title: `${company.name} — ${company.tagline}`,
     description: company.shortDescription,
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
-  },
+  // Fora de produção o site inteiro sai com noindex — ver IS_PRODUCTION_SITE.
+  robots: IS_PRODUCTION_SITE
+    ? {
+        index: true,
+        follow: true,
+        googleBot: { index: true, follow: true, "max-image-preview": "large" },
+      }
+    : { index: false, follow: false },
   icons: {
     icon: "/favicon.svg",
     apple: "/brand/v-mark.png",

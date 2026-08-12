@@ -3,6 +3,17 @@ import { company } from "@/content/company";
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? company.url;
 
+/**
+ * Só o ambiente marcado explicitamente como produção pode ser indexado.
+ *
+ * Isto não é preciosismo: um subdomínio de preview indexado pelo Google vira
+ * conteúdo duplicado competindo com o site oficial, e tirar do índice depois é
+ * bem mais trabalhoso do que impedir a entrada. O default é "não indexar" —
+ * esquecer de setar a variável causa um site invisível, não um vazamento.
+ */
+export const IS_PRODUCTION_SITE =
+  process.env.NEXT_PUBLIC_SITE_ENV === "production";
+
 type PageMetaInput = {
   title: string;
   description: string;
@@ -23,7 +34,8 @@ export function pageMeta({
     title,
     description,
     alternates: { canonical: url },
-    robots: index ? undefined : { index: false, follow: true },
+    robots:
+      index && IS_PRODUCTION_SITE ? undefined : { index: false, follow: true },
     openGraph: {
       title: `${title} | ${company.name}`,
       description,
