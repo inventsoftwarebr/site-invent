@@ -1,5 +1,20 @@
 {
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
-  "/page": "/"
+  "/api/contato/route": "/api/contato",
+  "/carreiras/page": "/carreiras",
+  "/cases/page": "/cases",
+  "/contato/page": "/contato",
+  "/opengraph-image/route": "/opengraph-image",
+  "/page": "/",
+  "/parceiros/page": "/parceiros",
+  "/reforma-tributaria/page": "/reforma-tributaria",
+  "/robots.txt/route": "/robots.txt",
+  "/segmentos/page": "/segmentos",
+  "/sitemap.xml/route": "/sitemap.xml",
+  "/sobre/page": "/sobre",
+  "/solucoes/[slug]/page": "/solucoes/[slug]",
+  "/solucoes/page": "/solucoes",
+  "/solucoes/s4hana-cloud/page": "/solucoes/s4hana-cloud",
+  "/universidade/page": "/universidade"
 }

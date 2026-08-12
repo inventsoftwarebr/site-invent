@@ -1,24 +1,35 @@
+# Dependências
+node_modules
+.pnp
+.pnp.*
+
+# Next.js
+.next/
+out/
+build/
+next-env.d.ts
+
+# Deploy
+.vercel
+
+# Ambiente — nunca versionar credencial
+.env
+.env*.local
+
 # Logs
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Cache e cobertura
+coverage/
+*.tsbuildinfo
 
-# Editor directories and files
+# Sistema operacional e editores
+.DS_Store
+.idea
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
 *.sw?

@@ -26,10 +26,14 @@ export function SiteHeader() {
   }, []);
 
   // Fecha o menu ao navegar — sem isso o overlay fica preso sobre a nova página.
-  useEffect(() => {
+  // Ajuste durante a renderização (e não em efeito): o React descarta o render
+  // em andamento e refaz com o estado novo, sem pintar o menu aberto na tela.
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
     setMobileOpen(false);
     setOpenMenu(null);
-  }, [pathname]);
+  }
 
   // Trava o scroll do body enquanto o menu mobile está aberto.
   useEffect(() => {

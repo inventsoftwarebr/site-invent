@@ -44,7 +44,16 @@
     "afterFiles": [],
     "fallback": []
   },
-  "dynamicRoutes": [],
+  "dynamicRoutes": [
+    {
+      "page": "/solucoes/[slug]",
+      "regex": "^/solucoes/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/solucoes/(?<nxtPslug>[^/]+?)(?:/)?$"
+    }
+  ],
   "staticRoutes": [
     {
       "page": "/",
@@ -63,6 +72,90 @@
       "regex": "^/_not\\-found(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/api/contato",
+      "regex": "^/api/contato(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/contato(?:/)?$"
+    },
+    {
+      "page": "/carreiras",
+      "regex": "^/carreiras(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/carreiras(?:/)?$"
+    },
+    {
+      "page": "/cases",
+      "regex": "^/cases(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/cases(?:/)?$"
+    },
+    {
+      "page": "/contato",
+      "regex": "^/contato(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/contato(?:/)?$"
+    },
+    {
+      "page": "/opengraph-image",
+      "regex": "^/opengraph\\-image(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/opengraph\\-image(?:/)?$"
+    },
+    {
+      "page": "/parceiros",
+      "regex": "^/parceiros(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/parceiros(?:/)?$"
+    },
+    {
+      "page": "/reforma-tributaria",
+      "regex": "^/reforma\\-tributaria(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/reforma\\-tributaria(?:/)?$"
+    },
+    {
+      "page": "/robots.txt",
+      "regex": "^/robots\\.txt(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/robots\\.txt(?:/)?$"
+    },
+    {
+      "page": "/segmentos",
+      "regex": "^/segmentos(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/segmentos(?:/)?$"
+    },
+    {
+      "page": "/sitemap.xml",
+      "regex": "^/sitemap\\.xml(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sitemap\\.xml(?:/)?$"
+    },
+    {
+      "page": "/sobre",
+      "regex": "^/sobre(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sobre(?:/)?$"
+    },
+    {
+      "page": "/solucoes",
+      "regex": "^/solucoes(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/solucoes(?:/)?$"
+    },
+    {
+      "page": "/solucoes/s4hana-cloud",
+      "regex": "^/solucoes/s4hana\\-cloud(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/solucoes/s4hana\\-cloud(?:/)?$"
+    },
+    {
+      "page": "/universidade",
+      "regex": "^/universidade(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/universidade(?:/)?$"
     }
   ],
   "dataRoutes": [],

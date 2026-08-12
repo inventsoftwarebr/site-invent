@@ -92,6 +92,15 @@ export default function RootLayout({
       className={`${barlow.variable} ${inter.variable} ${jetbrains.variable}`}
     >
       <body>
+        {/*
+          Sem JavaScript o framer-motion nunca reverte o `opacity: 0` inline dos
+          blocos de entrada e a página fica em branco. Este bloco só é aplicado
+          quando o script está desligado, então não há custo no caso normal.
+        */}
+        <noscript>
+          <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
+
         <JsonLd data={organizationJsonLd()} />
         <SiteHeader />
         <main id="conteudo">{children}</main>

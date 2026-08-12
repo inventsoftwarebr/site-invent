@@ -92,12 +92,25 @@
   --brand-hover: #ffb000;
   --accent: #d81e2d;
 
+  /* Gradiente do V-mark, conforme manual de marca. Para superfícies. */
   --v-gradient: linear-gradient(
     180deg,
     #ffb000 0%,
     #f7a600 38%,
     #d81e2d 78%,
     #b81825 100%
+  );
+
+  /* Variante para texto. A rampa oficial termina em #b81825, que sobre fundo
+     escuro fica em 3.1:1 — no limite do AA para texto grande e reprovado para
+     qualquer coisa menor. Esta versão para a rampa no vermelho claro (#e94049,
+     ≈4.4:1) mantendo a leitura de marca. */
+  --v-gradient-text: linear-gradient(
+    180deg,
+    #ffc246 0%,
+    #ffb000 34%,
+    #f7a600 58%,
+    #e94049 100%
   );
 }
 
@@ -181,7 +194,7 @@
    ============================================================================ */
 
 @utility text-v-gradient {
-  background-image: var(--v-gradient);
+  background-image: var(--v-gradient-text);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;

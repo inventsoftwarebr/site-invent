@@ -4,8 +4,15 @@ import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 /**
- * Entrada por scroll. `useReducedMotion` desliga o deslocamento para quem
- * configurou o sistema para menos movimento — o conteúdo aparece, sem viagem.
+ * Entrada por scroll.
+ *
+ * Dois cuidados que não são opcionais num site institucional:
+ *
+ * 1. `useReducedMotion` desliga o deslocamento para quem configurou o sistema
+ *    para menos movimento — o conteúdo aparece, sem viagem.
+ * 2. O estado inicial `opacity: 0` é um estilo inline. Sem JavaScript ele nunca
+ *    é revertido e a página inteira fica em branco. A regra `noscript` em
+ *    `globals.css` força a visibilidade nesse cenário.
  */
 export function Reveal({
   children,
@@ -25,7 +32,7 @@ export function Reveal({
 
   return (
     <MotionTag
-      className={cn(className)}
+      className={cn("reveal", className)}
       initial={{ opacity: 0, y: reduced ? 0 : y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}

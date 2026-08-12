@@ -11,11 +11,8 @@ function Counter({ to, active }: { to: number; active: boolean }) {
   const frame = useRef<number | undefined>(undefined);
 
   useEffect(() => {
-    if (!active) return;
-    if (reduced) {
-      setValue(to);
-      return;
-    }
+    // Com movimento reduzido não há animação: o valor final é derivado abaixo.
+    if (!active || reduced) return;
 
     const start = performance.now();
     const duration = 1800;
@@ -33,7 +30,9 @@ function Counter({ to, active }: { to: number; active: boolean }) {
     };
   }, [active, to, reduced]);
 
-  return <>{value}</>;
+  const display = !active ? 0 : reduced ? to : value;
+
+  return <>{display}</>;
 }
 
 export function Stats() {
